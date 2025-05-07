@@ -66,3 +66,13 @@ marcadoresDelitos.forEach(function(delito) {
     .addTo(mapa)
     .bindPopup(delito.descripcion);
 });
+function enviarWhatsApp() {
+    const numero = "5212212483486"; // WhatsApp receptor
+    const mensaje = document.getElementById("mensajeWhatsapp").value.trim();
+    if (mensaje === "") {
+      alert("Por favor escribe un mensaje antes de enviarlo.");
+      return;
+    }
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, "_blank");
+  }
