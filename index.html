@@ -1,97 +1,162 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Alerta Segura - Prevención de Armas</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link id="estilo" rel="stylesheet" href="styles.css" />
-  <!-- Leaflet CSS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prevención de Armas</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f3f4f6;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1f2937;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: space-around;
+      background-color: #111827;
+      padding: 10px 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      padding: 20px;
+    }
+    .contact-box {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .contact-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #2b2b2b;
+    }
+    .contact-description {
+      margin-bottom: 12px;
+      color: #555;
+    }
+    .whatsapp-button {
+      background-color: #25D366;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .whatsapp-button:hover {
+      background-color: #1ebe5d;
+    }
+    .info-box {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .info-box h2 {
+      color: #1f2937;
+    }
+    .info-box ul {
+      padding-left: 20px;
+    }
+    .info-box p {
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-
   <header>
-    <h1>🔒 Alerta Segura</h1>
-    <p>Aplicación educativa sobre la prevención de armas</p>
-    <nav class="navbar">
-        <button onclick="mostrar('informacion')">📘 Información</button>
-        <button onclick="mostrar('denuncia')">📢 Denuncia</button>
-        <button onclick="activarVersionMovil()">📱 Versión Celular</button>
-        <button onclick="activarVersionEscritorio()">🖥️ Versión Escritorio</button>
-      </nav>
-      
+    <h1>Prevención de Armas</h1>
   </header>
 
-  <main>
-    <!-- Sección de Información -->
-    <section id="informacion" class="activo">
-        <h2>📘 Información sobre Prevención</h2>
-      
-        <div class="modulo">
-          <h3>¿Qué hacer en un tiroteo?</h3>
-          <ul>
-            <li><strong>Corre si es seguro hacerlo:</strong> Si tienes una ruta de escape clara, huye lo más rápido posible.</li>
-            <li><strong>Escóndete si no puedes escapar:</strong> Busca refugio detrás de objetos sólidos como paredes de concreto o muebles pesados.</li>
-            <li><strong>Silencia tu teléfono:</strong> Evita hacer ruido que pueda revelar tu ubicación.</li>
-            <li><strong>No enfrentes al agresor:</strong> Solo como último recurso, si tu vida está en peligro inminente, defiéndete.</li>
-            <li><strong>Llama a emergencias:</strong> Tan pronto como sea seguro, contacta a las autoridades (911).</li>
-          </ul>
-        </div>
-      
-        <div class="modulo">
-          <h3>¿Por qué es ilegal tener armas de fuego sin permiso en México?</h3>
-          <p>La posesión y portación de armas está regulada por la Ley Federal de Armas de Fuego y Explosivos. Según el Artículo 10 de la Constitución Mexicana, los ciudadanos pueden poseer armas en su domicilio con fines de defensa, pero portar armas fuera del hogar requiere un permiso especial expedido por la SEDENA.</p>
-          <p>Principales razones:</p>
-          <ul>
-            <li><strong>Control de seguridad pública:</strong> Evita que cualquier persona tenga acceso a armas que podrían usarse en delitos.</li>
-            <li><strong>Regulación del tipo de armas:</strong> Algunas armas están reservadas exclusivamente para el Ejército y cuerpos de seguridad.</li>
-            <li><strong>Prevención de violencia:</strong> Las armas sin regulación aumentan el riesgo de homicidios y delitos violentos.</li>
-          </ul>
-        </div>
-      
-        <div class="modulo">
-          <h3>Consecuencias legales de portar un arma sin permiso</h3>
-          <ul>
-            <li><strong>Prisión:</strong> De 1 a 6 años, dependiendo del arma y las circunstancias.</li>
-            <li><strong>Multas:</strong> De 500 a 1,000 veces el valor diario de la Unidad de Medida y Actualización.</li>
-            <li><strong>Decomiso del arma:</strong> Toda arma ilegal será confiscada.</li>
-            <li><strong>Antecedentes penales:</strong> Afecta empleos, trámites legales y oportunidades futuras.</li>
-            <li><strong>Pena mayor:</strong> Si el arma es de uso exclusivo del Ejército, la condena puede ser más severa.</li>
-          </ul>
-          <p>Para más detalles, puedes consultar a la Fiscalía General de la República o la Ley Federal de Armas de Fuego y Explosivos.</p>
-        </div>
-        <div id="mapa-delitos" style="height: 400px;"></div>
+  <nav>
+    <a href="#info">Información</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
 
-      </section>
-      
+  <section id="info" class="info-box">
+    <h2>¿Qué hacer en un tiroteo?</h2>
+    <ul>
+      <li><strong>Corre si es seguro hacerlo:</strong> Si tienes una ruta de escape clara, huye lo más rápido posible.</li>
+      <li><strong>Escóndete si no puedes escapar:</strong> Busca refugio detrás de objetos sólidos como paredes o muebles pesados.</li>
+      <li><strong>Silencia tu teléfono:</strong> Evita hacer ruido que pueda revelar tu ubicación.</li>
+      <li><strong>No enfrentes al agresor:</strong> Solo como último recurso, defiéndete si tu vida está en peligro inminente.</li>
+      <li><strong>Llama a emergencias:</strong> Tan pronto como sea seguro, contacta a las autoridades.</li>
+    </ul>
 
-    <!-- Sección de Denuncia -->
-    <section id="denuncia">
-        <h2>📢 Denuncias y Llamadas de Emergencia</h2>
-        <p>Utiliza los siguientes números para realizar denuncias anónimas o solicitar ayuda inmediata. ¡Tu seguridad es lo más importante!</p>
-      
-        <ul class="llamadas">
-          <li><a href="tel:911">📞 911 - Emergencias</a><br><small>Reporta accidentes, incendios, situaciones de peligro.</small></li>
-          <li><a href="tel:089">📞 089 - Denuncia Anónima</a><br><small>Denuncia actividades sospechosas de forma segura.</small></li>
-          <li><a href="tel:2464164902">📞 246 416 4902 - Atención Telefónica</a></li>
-          <li><a href="tel:2461293051">📞 246 129 3051 - Ambulancia Telefónica</a></li>
-          <li><a href="tel:2212483486">📞 221 248 3486 - Atención WhatsApp</a></li>
-          <li><a href="tel:2214264018">📞 221 426 4018 - Ambulancia por WhatsApp</a></li>
-        </ul>
-      
-        <p class="mensaje-final">Tu colaboración es fundamental para mantener un Teolocholco seguro para todos. ¡Estamos para ayudarte! 🔒</p>
-      </section>
-      
-  </main>
+    <h2>¿Por qué es ilegal tener armas de fuego sin permiso en México?</h2>
+    <p>La posesión y portación de armas está regulada por la Ley Federal de Armas de Fuego y Explosivos. El Artículo 10 de la Constitución permite tener armas en el domicilio con fines de defensa, pero la portación requiere licencia expedida por SEDENA.</p>
+    <ul>
+      <li>Evitar acceso indiscriminado a armas.</li>
+      <li>Regular armas reservadas a fuerzas armadas.</li>
+      <li>Prevenir violencia y delitos.</li>
+    </ul>
 
-  <footer>
-    <p>&copy; 2025 Alerta Segura. Aplicación educativa sin fines reales de denuncia.</p>
-  </footer>
+    <h2>Consecuencias legales</h2>
+    <ul>
+      <li>Prisión de 1 a 6 años.</li>
+      <li>Multas económicas.</li>
+      <li>Decomiso del arma.</li>
+      <li>Antecedentes penales.</li>
+    </ul>
+  </section>
 
-  <script src="script.js"></script>
+  <section id="contacto">
+    <div class="contact-box">
+      <div class="contact-title">Emergencias Generales</div>
+      <div class="contact-description">Llama al 911 para reportar accidentes, emergencias médicas o situaciones de peligro.</div>
+      <a href="tel:911" class="whatsapp-button">Llamar al 911</a>
+    </div>
 
+    <div class="contact-box">
+      <div class="contact-title">Denuncia Anónima</div>
+      <div class="contact-description">Llama al 089 para denunciar actividades sospechosas de forma segura.</div>
+      <a href="tel:089" class="whatsapp-button">Llamar al 089</a>
+    </div>
+
+    <div class="contact-box">
+      <div class="contact-title">Atención Telefónica</div>
+      <a href="tel:2464164902" class="whatsapp-button">246 416 4902</a>
+    </div>
+
+    <div class="contact-box">
+      <div class="contact-title">Ambulancia Teléfono</div>
+      <a href="tel:2461293051" class="whatsapp-button">246 129 3051</a>
+    </div>
+
+    <div class="contact-box">
+      <div class="contact-title">Contacto vía WhatsApp</div>
+      <div class="contact-description">Envía un mensaje por WhatsApp a atención general:</div>
+      <a href="https://wa.me/5212212483486" target="_blank" class="whatsapp-button">
+        WhatsApp: 221 248 3486
+      </a>
+    </div>
+
+    <div class="contact-box">
+      <div class="contact-title">Ambulancia por WhatsApp</div>
+      <div class="contact-description">Solicita atención de ambulancia directamente:</div>
+      <a href="https://wa.me/5212214264018" target="_blank" class="whatsapp-button">
+        WhatsApp: 221 426 4018
+      </a>
+    </div>
+  </section>
 </body>
 </html>
